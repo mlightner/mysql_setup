@@ -34,7 +34,7 @@ namespace :mysql_setup do
 
   desc "Setup MySQL user for this app"
   task :user => :environment do
-    dbs = ActiveRecord::Base.configurations.each_value.collect { |c| c['database'] }
+    dbs = ActiveRecord::Base.configurations.values.collect { |c| c['database'] }
     setup_user_for_databases(ActiveRecord::Base.configurations[RAILS_ENV]['username'],ActiveRecord::Base.configurations[RAILS_ENV]['password'], dbs)
   end
 
