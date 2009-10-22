@@ -43,7 +43,7 @@ And, Action!
 ------------
 Simply type the following from the root directory of your app and everything should be setup correctly:
 
-  rake mysql_setup:full
+	rake mysql_setup:full
 
 Your output should have no errors.  You're ready to rock and roll.
 
