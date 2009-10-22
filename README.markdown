@@ -7,6 +7,12 @@ Warning
 -------
 This will drop any existing databases defined in your database.yml file.  Don't run it if you have any important data that isn't backed up!!!
 
+Installation
+------------
+Easy:
+
+	./script/plugin install git://github.com/mlightner/mysql_setup.git
+
 
 Prerequisites
 -------------
@@ -45,8 +51,32 @@ Simply type the following from the root directory of your app and everything sho
 
 	rake mysql_setup:full
 
-Your output should have no errors.  You're ready to rock and roll.
+Your output should have no errors.  You're ready to rock and roll.  Here's some sample output:
 
+	you@yourserver [~/yourapp]# sudo rake mysql_setup:full
+	Executing: DROP DATABASE IF EXISTS yourapp_production
+	Executing: CREATE DATABASE yourapp_production
+	Executing: DROP DATABASE IF EXISTS yourapp_development
+	Executing: CREATE DATABASE yourapp_development
+	Executing: DROP DATABASE IF EXISTS
+	Executing: CREATE DATABASE
+	Executing: DROP DATABASE IF EXISTS yourapp_test
+	Executing: CREATE DATABASE yourapp_test
+	Executing: DROP USER 'application_user'
+	Executing: FLUSH PRIVILEGES
+	Executing: CREATE USER 'application_user' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_production.* TO 'application_user'@'%' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_production.* TO 'application_user'@'localhost' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_production.* TO 'application_user'@'yourserver.yourdomain.com' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_development.* TO 'application_user'@'%' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_development.* TO 'application_user'@'localhost' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_development.* TO 'application_user'@'yourserver.yourdomain.com' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON .* TO 'application_user'@'%' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON .* TO 'application_user'@'localhost' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON .* TO 'application_user'@'yourserver.yourdomain.com' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_test.* TO 'application_user'@'%' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_test.* TO 'application_user'@'localhost' IDENTIFIED BY 'yoursupersecretpass'
+	Executing: GRANT ALL PRIVILEGES ON yourapp_test.* TO 'application_user'@'yourserver.yourdomain.com' IDENTIFIED BY 'yoursupersecretpass'
 
 Author and License
 ------------------
