@@ -16,7 +16,7 @@ Easy:
 
 Prerequisites
 -------------
-Before you can use this plugin, you must have your system's root user's .my.cnf setup with the proper login and password as described [here](http://www.modwest.com/help/kb6-242.html).
+Before you can use this plugin, you must have your system's root user's .my.cnf setup with the proper login and password as described [here](http://www.modwest.com/help/kb6-242.html).  This should be located at **/root/.my.cnf**
 
 Specifically, you should be able to type "mysql" as root and be taken to the mysql command prompt without having to type a password.  If you want to leave it there after using the plugin is up to you and your security policies.
 
@@ -47,9 +47,9 @@ Create **config/database.yml** (you must be using mysql as your engine).  Be sur
 
 And, Action!
 ------------
-Simply type the following from the root directory of your app and everything should be setup correctly:
+Simply type the following from the root directory of your app and everything should be setup correctly (if you're not root, you need to include the sudo part):
 
-	rake mysql_setup:full
+	sudo rake mysql_setup:full
 
 Your output should have no errors.  You're ready to rock and roll.  Here's some sample output:
 
